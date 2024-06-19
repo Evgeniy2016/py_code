@@ -1,0 +1,29 @@
+# Check if inputs/ outputs have the same field names
+def check_if_fields_have_similar_names(sheet_name_txt):
+
+    all_schema_lst = []
+
+    #for dmw, outp_fl, path in zip(combined_fl['dmw_name'], combined_fl['file_names'], combined_fl['links']): 
+    for rec in combined_fl.index: 
+
+        if combined_fl.iloc[????,rec].split(".")[-1] = "xls":   # ???? - change to the number of appropriate column
+            schema_fl = pd.read_excel(link, sheet_name=sheet_name_txt)
+            schema_fl = schema_fl.dropna() 
+            columns_names = schema_fl.iloc[:,1].to_list()
+            columns_names.append(combined_fl.iloc[????,rec].split(".")[0]) # -> column number with file name
+            columns_names.append(combined_fl.iloc[????,rec]) # -> column number with outputs
+            columns_names.append(combined_fl.iloc[????,rec])   # -> column number with path
+            columns_names.append(combined_fl.iloc[????,rec])   # -> column number with feed id
+            columns_names.append(combined_fl.iloc[????,rec])   # -> column number with rank/ dmw_id_in_feed
+    
+        all_schema_lst.append(columns_names)
+    
+    all_schema_lst_df = pd.DataFrame(all_schema_lst)
+
+    for each_col in enumerate(all_schema_lst_df.columns):
+    
+        print("DMW name: " + all_schema_lst_df.iloc[????,each_col[0]], # ???? - change to the number of appropriate column. should be column with DMW
+              "all records: " + all_schema_lst_df.iloc[:,each_col[0]].count(), 
+              "all unique records: " + all_schema_lst_df.iloc[:,each_col[0]].nunique())
+
+check_if_fields_have_similar_names('Input_Feed')
